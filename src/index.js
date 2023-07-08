@@ -1,16 +1,10 @@
 import _ from 'lodash';
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
-const getNoramalizedPath = (filePath) => {
-  if (filePath.startsWith('.') || filePath.startsWith('..') || filePath.startsWith('//')) {
-    return path.normalize(filePath);
-  }
-  return filePath;
-};
+const getNoramalizedPath = (filePath) => path.resolve(process.cwd(), filePath);
 
-const getFileData = (filePath) => fs.readFileSync(getNoramalizedPath(filePath), 'utf8');
-
+const getFileData = (filePath) => fs.readFileSync(getNoramalizedPath(filePath));
 const getFileExtension = (filePath) => path.extname(filePath);
 
 const getParsedFileData = (filePath) => {
@@ -31,7 +25,12 @@ const genDiff = (filepath1, filepath2) => {
     } if (!_.has(fileData2, key)) {
       return { key, value, status: 'deleted' };
     } if (fileData1[key] !== fileData2[key]) {
-      return { key, value, status: 'changed' };
+      return {
+        key,
+        oldValue: fileData1[key],
+        newValue: fileData2[key],
+        status: 'changed',
+      };
     }
     return { key, value, status: 'unchanged' };
   });
@@ -42,7 +41,7 @@ const genDiff = (filepath1, filepath2) => {
     } if (node.status === 'deleted') {
       return `- ${node.key}: ${node.value}`;
     } if (node.status === 'changed') {
-      return `- ${node.key}: ${node.value}`;
+      return `- ${node.key}: ${node.oldValue} \n + ${node.key}: ${node.newValue}`;
     }
     return `${node.key}: ${node.value}`;
   });
