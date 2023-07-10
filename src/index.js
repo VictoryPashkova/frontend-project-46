@@ -1,10 +1,12 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable no-console */
 import _ from 'lodash';
 import fs from 'fs';
 import path from 'path';
 
 const getNoramalizedPath = (filePath) => path.resolve(process.cwd(), filePath);
 
-const getFileData = (filePath) => fs.readFileSync(getNoramalizedPath(filePath));
+const getFileData = (filePath) => fs.readFileSync(filePath);
 const getFileExtension = (filePath) => path.extname(filePath);
 
 const getParsedFileData = (filePath) => {
@@ -60,7 +62,6 @@ const genDiff = (filepath1, filepath2) => {
   });
   const makeUniq = _.uniq(makeResultString);
   const result = `{\n${makeUniq.join('\n')}\n}`;
-
   return result;
 };
 
