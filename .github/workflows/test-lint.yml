@@ -34,10 +34,7 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: |
-          make install
-        env:
-          CI: true
+        run: npm install
 
       - name: Run tests
         run: NODE_OPTIONS=--experimental-vm-modules npx jest
