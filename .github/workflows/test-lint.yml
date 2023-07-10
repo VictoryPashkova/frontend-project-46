@@ -35,6 +35,8 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        env:
+          CI: true
 
       - name: Run tests
         run: NODE_OPTIONS=--experimental-vm-modules npx jest
