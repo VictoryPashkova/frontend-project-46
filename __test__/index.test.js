@@ -2,8 +2,9 @@ import fs from 'fs';
 import path from 'path';
 import genDiff from '../src/index.js';
 
-const readResultJson = fs.readFileSync(path.resolve(process.cwd(), '__fixtures__/resultjson.txt'),
-'utf-8',
+const readResultJson = fs.readFileSync(
+  path.resolve(process.cwd(), '__fixtures__/resultjson.txt'),
+  'utf-8',
 );
 
 test('genDiff', () => {
