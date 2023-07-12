@@ -7,5 +7,5 @@ const readResultJson = fs.readFileSync(path.resolve(process.cwd(), '__fixtures__
 );
 
 test('genDiff', () => {
-  expect(genDiff('/Users/v.paskova/Desktop/frontend-project-46/__fixtures__/file1.json', '/Users/v.paskova/Desktop/frontend-project-46/__fixtures__/file2.json')).toEqual(readResultJson);
+  expect(genDiff('__fixtures__/file1.json', '__fixtures__/file2.json')).toEqual(readResultJson);
 });
