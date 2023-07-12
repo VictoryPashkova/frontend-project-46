@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable import/extensions */
 import fs from 'fs';
 import path from 'path';
 import genDiff from '../src/index.js';
