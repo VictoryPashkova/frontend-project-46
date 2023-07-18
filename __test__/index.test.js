@@ -9,6 +9,12 @@ const readResultJson = fs.readFileSync(
   'utf-8',
 );
 
+const readResultYaml = fs.readFileSync(
+  path.resolve(process.cwd(), '__fixtures__/resultyaml.txt'),
+  'utf-8',
+);
+
 test('genDiff', () => {
   expect(genDiff('__fixtures__/file1.json', '__fixtures__/file2.json')).toEqual(readResultJson);
+  expect(genDiff('__fixtures__/file1.yaml', '__fixtures__/file2.yaml')).toEqual(readResultYaml);
 });

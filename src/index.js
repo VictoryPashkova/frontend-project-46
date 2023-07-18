@@ -3,22 +3,16 @@
 import _ from 'lodash';
 import fs from 'fs';
 import path from 'path';
+import getParsedFileData from './parsers.js';
 
 const getNoramalizedPath = (filePath) => path.resolve(process.cwd(), filePath);
 
-const getFileData = (filePath) => fs.readFileSync(filePath);
-const getFileExtension = (filePath) => path.extname(filePath);
-
-const getParsedFileData = (filePath) => {
-  if (getFileExtension(filePath) === '.json') {
-    return JSON.parse(getFileData(filePath));
-  }
-  return 'file extension error';
-};
+const getFileData = (filePath) => fs.readFileSync(filePath).toString();
+const getFileExtension = (filePath) => path.extname(filePath).toString();
 
 const genDiff = (filepath1, filepath2) => {
-  const fileData1 = { ...getParsedFileData(filepath1.toString()) };
-  const fileData2 = { ...getParsedFileData(filepath2.toString()) };
+  const fileData1 = { ...getParsedFileData(getFileData(filepath1), getFileExtension(filepath2)) };
+  const fileData2 = { ...getParsedFileData(getFileData(filepath2), getFileExtension(filepath1)) };
 
   const keys = _.sortBy(Object.entries(fileData1).concat(Object.entries(fileData2)));
 
@@ -66,3 +60,4 @@ const genDiff = (filepath1, filepath2) => {
 };
 
 export default genDiff;
+export { getFileExtension, getFileData };

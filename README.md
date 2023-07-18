@@ -26,3 +26,6 @@ gendiff file1.json file2.yml
 
 JSON format dem:
 [![asciicast](https://asciinema.org/a/QFukJRwSngF4UH9NHRAiJ4Yfg.svg)](https://asciinema.org/a/QFukJRwSngF4UH9NHRAiJ4Yfg)
+
+YAML format dem:
+[![asciicast](https://asciinema.org/a/pqN8TzcnhTPLnxRajHvZqA1gJ.svg)](https://asciinema.org/a/pqN8TzcnhTPLnxRajHvZqA1gJ)
