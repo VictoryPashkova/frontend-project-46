@@ -4,7 +4,7 @@ const buildTree = (fileData1, fileData2) => {
   const keys = _.sortBy(_.uniq(Object.entries(fileData2).concat(Object.entries(fileData1))));
 
   const statuses = keys.map(([key, value]) => {
-    if (_.isObject(fileData1[key]) && _.isObject(fileData2[key]) && !Array.isArray(fileData1[key]) && !Array.isArray(fileData2[key])) {
+    if (_.isPlainObject(fileData1[key]) && _.isPlainObject(fileData2[key])) {
       return {
         key,
         children: buildTree(fileData1[key], fileData2[key]),
