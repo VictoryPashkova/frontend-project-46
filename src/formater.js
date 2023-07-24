@@ -10,14 +10,14 @@ const stringify = (data, level) => {
     return `${data}`;
   }
   const entries = Object.entries(data);
-  const result = entries.map(([key, value]) => `${makeSpace(level + 4)}${key}: ${stringify(value, level + 2)}`);
-  const format = ['{', ...result, `  ${makeSpace(level + 1)}}`].join('\n');
+  const result = entries.map(([key, value]) => `${makeSpace(level)}  ${key}: ${stringify(value, level + 1)}`);
+  const format = ['{', ...result, `${makeSpace(level + 1)}}`].join('\n');
 
   return format;
 };
 
-const stylish = (comperedData) => {
-  const line = ({
+const lines = (comperedData) => {
+  const iter = ({
     key,
     children,
     value,
@@ -25,20 +25,23 @@ const stylish = (comperedData) => {
     newValue,
     status,
   }, level) => {
-    if (status === 'nested') {
-      const nestedLines = stylish(_.sortBy(children), level + 1);
-      return [`${makeSpace(level)}${key}: {`, ...nestedLines, `${makeSpace(level)}}`];
-    } if (status === 'added') {
-      return `${makeSpace(level)}  + ${key}: ${stringify(value, level)}`;
-    } if (status === 'deleted') {
-      return `${makeSpace(level)}  - ${key}: ${stringify(value, level)}`;
-    } if (status === 'changed') {
-      return `${makeSpace(level)}  - ${key}: ${stringify(oldValue, level)}\n${makeSpace(level)}  + ${key}: ${stringify(newValue, level)}`;
-    } if (status === 'unchanged') {
-      return `${makeSpace(level + 2)}${key}: ${stringify(value, level)}`;
+    switch (status) {
+      case 'nested':
+        const nestedLines = lines(_.sortBy(children), level + 1);
+        return [`${makeSpace(level)}${key}: {`, ...nestedLines, `${makeSpace(level)}}`];
+      case 'added':
+        return `${makeSpace(level)}+ ${key}: ${stringify(value, level)}`;
+      case 'deleted':
+        return `${makeSpace(level)}- ${key}: ${stringify(value, level)}`;
+      case 'changed':
+        return `${makeSpace(level)}- ${key}: ${stringify(oldValue, level)}\n${makeSpace(level)}+ ${key}: ${stringify(newValue, level)}`;
+      case 'unchanged':
+        return `${makeSpace(level + 2)}${key}: ${stringify(value, level + 1)}`;
+      default:
+        return 'Error';
     }
   };
-  return comperedData.flatMap((node) => line(node, 2));
+  return comperedData.flatMap((node) => iter(node, 2));
 };
 
-export default stylish;
+export default lines;

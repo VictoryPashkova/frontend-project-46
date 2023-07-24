@@ -4,7 +4,7 @@ import _ from 'lodash';
 import fs from 'fs';
 import path from 'path';
 import getParsedFileData from './parsers.js';
-import stylish from './formater.js';
+import lines from './formater.js';
 import buildTree from './buildTree.js';
 
 const getNoramalizedPath = (filePath) => path.resolve(process.cwd(), filePath);
@@ -17,7 +17,7 @@ const genDiff = (filepath1, filepath2) => {
   const fileData2 = { ...getParsedFileData(getFileData(filepath2), getFileExtension(filepath1)) };
 
   const compared = buildTree(fileData1, fileData2);
-  const resultTree = stylish(compared);
+  const resultTree = lines(compared);
   const uniq = _.uniq(resultTree);
   const result = `{\n${uniq.join('\n')}\n}`;
   return result;
