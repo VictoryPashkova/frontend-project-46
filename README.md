@@ -24,8 +24,11 @@ Comparing files:
 # compare files: default format:
 gendiff file1.json file2.yml
 
-JSON format dem:
+JSON flat comparison dem:
 [![asciicast](https://asciinema.org/a/QFukJRwSngF4UH9NHRAiJ4Yfg.svg)](https://asciinema.org/a/QFukJRwSngF4UH9NHRAiJ4Yfg)
 
-YAML format dem:
+YAML flat comparison dem:
 [![asciicast](https://asciinema.org/a/pqN8TzcnhTPLnxRajHvZqA1gJ.svg)](https://asciinema.org/a/pqN8TzcnhTPLnxRajHvZqA1gJ)
+
+JSON&YAML nested comparison dem:
+[![asciicast](https://asciinema.org/a/SGEjCYPlyui1KplYIcu75cW5W.svg)](https://asciinema.org/a/SGEjCYPlyui1KplYIcu75cW5W)

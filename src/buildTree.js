@@ -1,9 +1,9 @@
 import _ from 'lodash';
 
 const buildTree = (fileData1, fileData2) => {
-  const keys = _.sortBy(_.uniq(Object.entries(fileData2).concat(Object.entries(fileData1))));
+  const commonKeys = _.sortBy(_.uniq(Object.entries(fileData2).concat(Object.entries(fileData1))));
 
-  const statuses = keys.map(([key, value]) => {
+  const comparisonTree = commonKeys.map(([key, value]) => {
     if (_.isPlainObject(fileData1[key]) && _.isPlainObject(fileData2[key])) {
       return {
         key,
@@ -37,7 +37,7 @@ const buildTree = (fileData1, fileData2) => {
       status: 'unchanged',
     };
   });
-  return (statuses);
+  return comparisonTree;
 };
 
 export default buildTree;
