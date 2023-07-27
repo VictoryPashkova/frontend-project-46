@@ -17,19 +17,21 @@ const stringify = (data, level) => {
   return format;
 };
 
-const stylish = (data, level = 1) => {
+const sign = { added: '+ ', removed: '- ', updated: { from: '- ', to: '+ ' }, unchanged: doubleIndent, nested: doubleIndent };
+
+const makeStylishFormat = (data, level = 1) => {
   const lines = data.map(({ status, key, value, oldValue, newValue, children }) => {
     switch (status) {
       case 'added':
-        return `${makeIndent(level)}+ ${key}: ${stringify(value, level)}`;
-      case 'deleted':
-        return `${makeIndent(level)}- ${key}: ${stringify(value, level)}`;
-      case 'changed':
-        return `${makeIndent(level)}- ${key}: ${stringify(oldValue, level)}\n${makeIndent(level)}+ ${key}: ${stringify(newValue, level)}`;
+        return `${makeIndent(level)}${sign.added}${key}: ${stringify(value, level)}`;
+      case 'removed':
+        return `${makeIndent(level)}${sign.removed}${key}: ${stringify(value, level)}`;
+      case 'updated':
+        return `${makeIndent(level)}${sign.updated.from}${key}: ${stringify(oldValue, level)}\n${makeIndent(level)}${sign.updated.to}${key}: ${stringify(newValue, level)}`;
       case 'unchanged':
-        return `${makeIndent(level)}${doubleIndent}${key}: ${stringify(value, 1)}`;
+        return `${makeIndent(level)}${sign.unchanged}${key}: ${stringify(value, 1)}`;
       case 'nested':
-        return `${makeIndent(level)}${doubleIndent}${key}: ${stylish(children, level + 1)}`;
+        return `${makeIndent(level)}${sign.nested}${key}: ${makeStylishFormat(children, level + 1)}`;
       default:
         return `Error: unknowen status ${status}`;
     }
@@ -39,4 +41,4 @@ const stylish = (data, level = 1) => {
   return `{\n${result.join('\n')}\n${makeIndent(level).slice(2)}}`;
 };
 
-export default stylish;
+export default makeStylishFormat;

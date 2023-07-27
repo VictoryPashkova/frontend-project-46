@@ -21,14 +21,14 @@ const buildTree = (fileData1, fileData2) => {
       return {
         key,
         value,
-        status: 'deleted',
+        status: 'removed',
       };
     } if (fileData1[key] !== fileData2[key]) {
       return {
         key,
         oldValue: fileData1[key],
         newValue: fileData2[key],
-        status: 'changed',
+        status: 'updated',
       };
     }
     return {

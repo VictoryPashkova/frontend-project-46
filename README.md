@@ -30,5 +30,8 @@ JSON flat comparison dem:
 YAML flat comparison dem:
 [![asciicast](https://asciinema.org/a/pqN8TzcnhTPLnxRajHvZqA1gJ.svg)](https://asciinema.org/a/pqN8TzcnhTPLnxRajHvZqA1gJ)
 
-JSON&YAML nested comparison dem:
+JSON&YAML stylish nested comparison dem:
 [![asciicast](https://asciinema.org/a/SGEjCYPlyui1KplYIcu75cW5W.svg)](https://asciinema.org/a/SGEjCYPlyui1KplYIcu75cW5W)
+
+JSON&YAML plain nested comparison dem:
+[![asciicast](https://asciinema.org/a/YSsXSGJHV0qJCi37BagBP9bro.svg)](https://asciinema.org/a/YSsXSGJHV0qJCi37BagBP9bro)
