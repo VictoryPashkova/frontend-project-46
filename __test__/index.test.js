@@ -4,26 +4,18 @@ import fs from 'fs';
 import path from 'path';
 import genDiff from '../src/index.js';
 
-const readResultStylish = fs.readFileSync(
-  path.resolve(process.cwd(), '__fixtures__/resultStylish.txt'),
-  'utf-8',
-);
-
-const readResultPlain = fs.readFileSync(
-  path.resolve(process.cwd(), '__fixtures__/resultPlain.txt'),
-  'utf-8',
-);
-
-const readResultJson = fs.readFileSync(
-  path.resolve(process.cwd(), '__fixtures__/resultJson.txt'),
-  'utf-8',
-);
+const getFixturePath = (filepath) => path.resolve(process.cwd(), '__fixtures__', filepath);
+const getResult = (filepath) => fs.readFileSync(getFixturePath(filepath), 'utf8');
 
 test('genDiff', () => {
-  expect(genDiff('__fixtures__/file1.json', '__fixtures__/file2.json')).toEqual(readResultStylish);
-  expect(genDiff('__fixtures__/file1.yaml', '__fixtures__/file2.yaml')).toEqual(readResultStylish);
-  expect(genDiff('__fixtures__/file1.json', '__fixtures__/file2.json', 'plain')).toEqual(readResultPlain);
-  expect(genDiff('__fixtures__/file1.yaml', '__fixtures__/file2.yaml', 'plain')).toEqual(readResultPlain);
-  expect(genDiff('__fixtures__/file1.json', '__fixtures__/file2.json', 'json')).toEqual(readResultJson);
-  expect(genDiff('__fixtures__/file1.yaml', '__fixtures__/file2.yaml', 'json')).toEqual(readResultJson);
+  const stylishResult = 'resultStylish.txt';
+  const plainResult = 'resultPlain.txt';
+  const jsonResult = 'resultJson.txt';
+
+  expect(genDiff('file1.json', 'file2.json')).toEqual(getResult(stylishResult));
+  expect(genDiff('file1.yaml', 'file2.yaml')).toEqual(getResult(stylishResult));
+  expect(genDiff('file1.json', 'file2.json', 'plain')).toEqual(getResult(plainResult));
+  expect(genDiff('file1.yaml', 'file2.yaml', 'plain')).toEqual(getResult(plainResult));
+  expect(genDiff('file1.json', 'file2.json', 'json')).toEqual(getResult(jsonResult));
+  expect(genDiff('file1.yaml', 'file2.yaml', 'json')).toEqual(getResult(jsonResult));
 });
