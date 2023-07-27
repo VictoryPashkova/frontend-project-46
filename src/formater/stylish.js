@@ -17,10 +17,14 @@ const stringify = (data, level) => {
   return format;
 };
 
-const sign = { added: '+ ', removed: '- ', updated: { from: '- ', to: '+ ' }, unchanged: doubleIndent, nested: doubleIndent };
+const sign = {
+  added: '+ ', removed: '- ', updated: { from: '- ', to: '+ ' }, unchanged: doubleIndent, nested: doubleIndent,
+};
 
 const makeStylishFormat = (data, level = 1) => {
-  const lines = data.map(({ status, key, value, oldValue, newValue, children }) => {
+  const lines = data.map(({
+    status, key, value, oldValue, newValue, children,
+  }) => {
     switch (status) {
       case 'added':
         return `${makeIndent(level)}${sign.added}${key}: ${stringify(value, level)}`;

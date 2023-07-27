@@ -1,13 +1,11 @@
+/* eslint-disable import/extensions */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-console */
-import _ from 'lodash';
 import fs from 'fs';
 import path from 'path';
 import getParsedFileData from './parsers.js';
 import buildTree from './buildTree.js';
 import chooseFormat from './formater/index.js';
-
-const getNoramalizedPath = (filePath) => path.resolve(process.cwd(), filePath);
 
 const getFileData = (filePath) => fs.readFileSync(filePath).toString();
 const getFileExtension = (filePath) => path.extname(filePath).toString();

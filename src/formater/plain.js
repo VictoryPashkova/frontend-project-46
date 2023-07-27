@@ -11,7 +11,9 @@ const returnComplexValue = (value) => {
 
 const makePlainFormat = (tree) => {
   const iter = (data, path = [data.key]) => {
-    const lines = data.flatMap(({ key, value, oldValue, newValue, children, status }) => {
+    const lines = data.flatMap(({
+      key, value, oldValue, newValue, children, status,
+    }) => {
       switch (status) {
         case 'added':
           return `Property '${[...path, key].join('.')}' was ${status} with value: ${returnComplexValue(value)}`;

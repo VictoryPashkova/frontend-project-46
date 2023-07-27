@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import makeStylishFormat from './stylish.js';
 import makePlainFormat from './plain.js';
 import makeJsonFormat from './json.js';

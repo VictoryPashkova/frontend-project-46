@@ -40,6 +40,9 @@ jobs:
       - name: Run tests
         run: npx jest
 
+      - name: Run lint
+        run: npx eslint .
+
       - name: Test & publish code coverage
       # Publish code coverage on Code Climate
       # https://github.com/paambaati/codeclimate-action
