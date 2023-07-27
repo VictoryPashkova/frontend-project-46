@@ -37,8 +37,7 @@ const makeStylishFormat = (data, level = 1) => {
     }
   });
 
-  const result = _.uniq(lines);
-  return `{\n${result.join('\n')}\n${makeIndent(level).slice(2)}}`;
+  return `{\n${lines.join('\n')}\n${makeIndent(level).slice(2)}}`;
 };
 
 export default makeStylishFormat;

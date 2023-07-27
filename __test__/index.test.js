@@ -14,9 +14,16 @@ const readResultPlain = fs.readFileSync(
   'utf-8',
 );
 
+const readResultJson = fs.readFileSync(
+  path.resolve(process.cwd(), '__fixtures__/resultJson.txt'),
+  'utf-8',
+);
+
 test('genDiff', () => {
   expect(genDiff('__fixtures__/file1.json', '__fixtures__/file2.json')).toEqual(readResultStylish);
   expect(genDiff('__fixtures__/file1.yaml', '__fixtures__/file2.yaml')).toEqual(readResultStylish);
   expect(genDiff('__fixtures__/file1.json', '__fixtures__/file2.json', 'plain')).toEqual(readResultPlain);
   expect(genDiff('__fixtures__/file1.yaml', '__fixtures__/file2.yaml', 'plain')).toEqual(readResultPlain);
+  expect(genDiff('__fixtures__/file1.json', '__fixtures__/file2.json', 'json')).toEqual(readResultJson);
+  expect(genDiff('__fixtures__/file1.yaml', '__fixtures__/file2.yaml', 'json')).toEqual(readResultJson);
 });

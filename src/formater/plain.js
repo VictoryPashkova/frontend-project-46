@@ -27,8 +27,7 @@ const makePlainFormat = (tree) => {
           return [];
       }
     });
-    const result = _.uniq(lines);
-    return result.join('\n');
+    return lines.join('\n');
   };
   return iter(tree, []);
 };
