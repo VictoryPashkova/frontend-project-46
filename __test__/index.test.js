@@ -2,14 +2,14 @@
 /* eslint-disable import/extensions */
 import fs from 'fs';
 import path, { dirname } from 'path';
-import { fileURLToPath } from 'url';
+import url from 'url';
 import genDiff from '../src/index.js';
 
-const __filename = fileURLToPath(import.meta.url);
+const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const getNoramalizedPath = (filepath) => path.resolve('__fixtures__', filepath);
-const getResult = (filepath) => fs.readFileSync(getNoramalizedPath(filepath), 'utf8');
+const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
+const getResult = (filepath) => fs.readFileSync(getFixturePath(filepath), 'utf8');
 
 test('genDiff', () => {
   const stylishResult = 'resultStylish.txt';
