@@ -8,8 +8,8 @@ import genDiff from '../src/index.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const getFixturePath = (filename) => path.join('__fixtures__', filename);
-const getResult = (filepath) => fs.readFileSync(getFixturePath(filepath), 'utf8');
+const getNoramalizedPath = (filepath) => path.resolve(process.cwd(), '__fixtures__', filepath);
+const getResult = (filepath) => fs.readFileSync(getNoramalizedPath(filepath), 'utf8');
 
 test('genDiff', () => {
   const stylishResult = 'resultStylish.txt';
