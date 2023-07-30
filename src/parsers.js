@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
 
-const getNoramalizedPath = (filepath) => path.resolve(process.cwd(), '__fixtures__', filepath);
+const getNoramalizedPath = (filepath) => path.resolve('__fixtures__', filepath);
 const getFileData = (filepath) => fs.readFileSync(filepath).toString();
 const getFileExtension = (filepath) => path.extname(filepath).toString();
 
