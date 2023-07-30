@@ -1,17 +1,13 @@
 import fs from 'fs';
-import path, { dirname } from 'path';
-import { fileURLToPath } from 'url';
+import path from 'path';
 import yaml from 'js-yaml';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
+const getNoramalizedPath = (filepath) => path.resolve(process.cwd(), '__fixtures__', filepath);
 const getFileData = (filepath) => fs.readFileSync(filepath).toString();
 const getFileExtension = (filepath) => path.extname(filepath).toString();
 
 const getParsedFileData = (filepath) => {
-  const fileData = getFileData(getFixturePath(filepath));
+  const fileData = getFileData(getNoramalizedPath(filepath));
   const fileFormat = getFileExtension(filepath);
   if (fileFormat === '.json') {
     return JSON.parse(fileData);
