@@ -3,7 +3,7 @@ import path from 'path';
 import yaml from 'js-yaml';
 
 const getNoramalizedPath = (filepath) => path.resolve(process.cwd(), '__fixtures__', filepath);
-const getFileData = (filepath) => fs.readFileSync(filepath).toString();
+const getFileData = (filepath) => fs.readFileSync(filepath, 'utf-8');
 const getFileExtension = (filepath) => path.extname(filepath).toString();
 
 const getParsedFileData = (filepath) => {
