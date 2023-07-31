@@ -1,8 +1,12 @@
 import fs from 'fs';
-import path from 'path';
+import { fileURLToPath } from 'url';
+import path, { dirname } from 'path';
 import yaml from 'js-yaml';
 
-const getNoramalizedPath = (filepath) => path.resolve(process.cwd(), '__fixtures__', filepath);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const getNoramalizedPath = (filename) => path.join(__dirname, '..', filename);
 const getFileData = (filepath) => fs.readFileSync(filepath, 'utf-8');
 const getFileExtension = (filepath) => path.extname(filepath).toString();
 
