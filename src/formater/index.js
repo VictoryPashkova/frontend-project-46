@@ -4,11 +4,11 @@ import makeJsonFormat from './json.js';
 
 const chooseFormat = (data, format) => {
   switch (format) {
-    case 'Stylish':
+    case 'stylish':
       return makeStylishFormat(data);
-    case 'Plain':
+    case 'plain':
       return makePlainFormat(data);
-    case 'Json':
+    case 'json':
       return makeJsonFormat(data);
     default:
       throw new Error(`Unknowen format ${format}`);

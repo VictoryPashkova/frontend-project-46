@@ -7,21 +7,17 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
-const getResult = (filepath) => fs.readFileSync(getFixturePath(filepath), 'utf8');
 
-const testingFormatters = [
-  ['Stylish'],
-  ['Plain'],
-  ['Json'],
-];
+describe.each([['stylish'], ['plain'], ['json']])('%s formatter', (formatter) => {
+  const filepathOfExpected = getFixturePath(`result${formatter}.txt`);
+  const expected = fs.readFileSync(filepathOfExpected, 'utf-8');
 
-const testingFileFormats = [
-  ['__fixtures__/file1.json', '__fixtures__/file2.json'],
-  ['__fixtures__/file1.yaml', '__fixtures__/file2.yaml'],
-];
+  test.each([['json'], ['yaml']])('%s files', (extension) => {
+    const filepath1 = getFixturePath(`file1.${extension}`);
+    const filepath2 = getFixturePath(`file2.${extension}`);
 
-describe.each(testingFormatters)('%s formater', (format) => {
-  test.each(testingFileFormats)('%s', (file1, file2) => {
-    expect(genDiff(file1, file2, format)).toEqual(getResult(`result${format}.txt`));
+    const result = genDiff(filepath1, filepath2, formatter);
+
+    expect(result).toBe(expected);
   });
 });
