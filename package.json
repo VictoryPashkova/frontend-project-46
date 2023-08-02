@@ -2,7 +2,7 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "type": "module",
-  "description": "[![Actions Status](https://github.com/VictoryPashkova/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/VictoryPashkova/frontend-project-46/actions)",
+  "description": "Difference Calculator. Compares two JSON files and shows the difference in three different format of output.",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
