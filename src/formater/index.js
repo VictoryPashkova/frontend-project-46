@@ -1,18 +1,17 @@
-/* eslint-disable import/extensions */
 import makeStylishFormat from './stylish.js';
 import makePlainFormat from './plain.js';
 import makeJsonFormat from './json.js';
 
 const chooseFormat = (data, format) => {
   switch (format) {
-    case 'stylish':
+    case 'Stylish':
       return makeStylishFormat(data);
-    case 'plain':
+    case 'Plain':
       return makePlainFormat(data);
-    case 'json':
+    case 'Json':
       return makeJsonFormat(data);
     default:
-      return 'Error';
+      throw new Error(`Unknowen format ${format}`);
   }
 };
 

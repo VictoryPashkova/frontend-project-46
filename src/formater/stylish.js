@@ -37,7 +37,7 @@ const makeStylishFormat = (data, level = 1) => {
       case 'nested':
         return `${makeIndent(level)}${sign.nested}${key}: ${makeStylishFormat(children, level + 1)}`;
       default:
-        return `Error: unknowen status ${status}`;
+        throw new Error(`Unknowen status ${status}`);
     }
   });
 
