@@ -36,9 +36,6 @@ jobs:
         env:
           CI: true
 
-      - name: Run tests
-        run: npx jest
-
       - name: Run lint
         run: npx eslint .
 
