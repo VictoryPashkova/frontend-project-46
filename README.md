@@ -1,8 +1,8 @@
 ### Difference Calculator
 
-Compares two JSON files and shows the difference.
+Compares two JSON or YAML files and shows the difference in three formats: stylish, plain, json.
 
-### Hexlet tests and linter status:
+### Tests and linter status:
 [![Actions Status Hexlet](https://github.com/VictoryPashkova/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/VictoryPashkova/frontend-project-46/actions)
 [![Actions Status CI Tests and Linting](https://github.com/VictoryPashkova/frontend-project-46/actions/workflows/test-lint.yml/badge.svg)](https://github.com/VictoryPashkova/frontend-project-46/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/0644bc4adf22f066f99f/maintainability)](https://codeclimate.com/github/VictoryPashkova/frontend-project-46/maintainability)
@@ -21,20 +21,19 @@ gendiff -h
 
 Comparing files:
 
-# compare files: default format:
-gendiff file1.json file2.yml
+# compare files demonstation:
 
-JSON flat comparison dem:
+Flat JSON files comparison:
 [![asciicast](https://asciinema.org/a/QFukJRwSngF4UH9NHRAiJ4Yfg.svg)](https://asciinema.org/a/QFukJRwSngF4UH9NHRAiJ4Yfg)
 
-YAML flat comparison dem:
+Flat YAML files comparison:
 [![asciicast](https://asciinema.org/a/pqN8TzcnhTPLnxRajHvZqA1gJ.svg)](https://asciinema.org/a/pqN8TzcnhTPLnxRajHvZqA1gJ)
 
-JSON&YAML stylish format nested comparison dem:
+Comparison of JSON&YAML files with nested data in the stylish format:
 [![asciicast](https://asciinema.org/a/SGEjCYPlyui1KplYIcu75cW5W.svg)](https://asciinema.org/a/SGEjCYPlyui1KplYIcu75cW5W)
 
-JSON&YAML plain format nested comparison dem:
+Comparison of JSON&YAML files with nested data in the plain format:
 [![asciicast](https://asciinema.org/a/YSsXSGJHV0qJCi37BagBP9bro.svg)](https://asciinema.org/a/YSsXSGJHV0qJCi37BagBP9bro)
 
-JSON&YAML json format nested comparison dem:
+Comparison of JSON&YAML files with nested data in the json format:
 [![asciicast](https://asciinema.org/a/2MOCnBgsQKleJzh9RNtscw4ek.svg)](https://asciinema.org/a/2MOCnBgsQKleJzh9RNtscw4ek)
