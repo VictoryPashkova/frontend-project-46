@@ -19,9 +19,7 @@ make link
 # help
 gendiff -h
 
-Comparing files:
-
-# compare files demonstation:
+# Comparing files demonstation:
 
 Flat JSON files comparison:
 [![asciicast](https://asciinema.org/a/QFukJRwSngF4UH9NHRAiJ4Yfg.svg)](https://asciinema.org/a/QFukJRwSngF4UH9NHRAiJ4Yfg)
